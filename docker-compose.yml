@@ -2,6 +2,7 @@ version: '3'
 services:
   jenkins_master:
     image: 'jenkins/jenkins:2.147'
+    restart: always
     ports:
      - '3200:8080'
      - '50000:50000'
@@ -9,6 +10,7 @@ services:
      - './jenkins_home:/var/jenkins_home'
   gitlab:
     image: 'gitlab/gitlab-ce:11.3.6-ce.0'
+    restart: always
     ports:
       - '3380:80'
       - '33443:443'

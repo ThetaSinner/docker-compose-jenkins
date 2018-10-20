@@ -3,6 +3,7 @@ FROM debian:7.11
 RUN apt-get update && apt-get install \
     && apt-get install -y \
     wget \
+    git \
     ca-certificates
 
 WORKDIR /opt/java

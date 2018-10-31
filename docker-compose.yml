@@ -1,13 +1,17 @@
-version: '3'
+version: '3.7'
 services:
   jenkins_master:
     image: 'jenkins/jenkins:2.147'
     restart: always
     ports:
      - '3200:8080'
-     - '50000:50000'
+     - '51000:50000'
     volumes:
      - './jenkins_home:/var/jenkins_home'
+    networks:
+      ops_env_network:
+        aliases:
+          - jenkins-master
   gitlab:
     image: 'gitlab/gitlab-ce:11.3.6-ce.0'
     restart: always
@@ -19,7 +23,15 @@ services:
       - 'gitlab_config:/etc/gitlab'
       - 'gitlab_logs:/var/log/gitlab'
       - 'gitlab_data:/var/opt/gitlab'
+    networks:
+      ops_env_network:
+        aliases:
+          - gitlab
 volumes:
   gitlab_config:
   gitlab_logs:
   gitlab_data:
+networks:
+  ops_env_network:
+    driver: bridge
+    attachable: true

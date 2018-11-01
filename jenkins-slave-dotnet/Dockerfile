@@ -16,7 +16,7 @@ RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg \
     && chown root:root /etc/apt/sources.list.d/microsoft-prod.list \
     && apt-get update \
-    && apt-get install -y dotnet-sdk-2.1
+    && apt-get install -y dotnet-sdk-2.1 nuget
 
 WORKDIR /opt/java
 RUN wget https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz \

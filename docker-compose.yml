@@ -27,6 +27,12 @@ services:
       ops_env_network:
         aliases:
           - gitlab
+  sonarqube:
+    image: 'sonarqube:7.1-alpine'
+    restart: always
+    ports:
+      - '9000:9000'
+      - '9092:9092'
 volumes:
   gitlab_config:
   gitlab_logs:
